@@ -1,0 +1,10 @@
+server:
+  port: 5001
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/augmentolabs
+    username: tejsingh
+    password: 123
+  flyway:
+    schemas: meters
