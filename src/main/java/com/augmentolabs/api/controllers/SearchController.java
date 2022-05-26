@@ -19,10 +19,10 @@ public class SearchController {
     private FacilityFacade facilityFacade;
 
     @GetMapping("/search")
-    public ResponseEntity getSearch(@RequestParam String facilityName,
-                                    @RequestParam Date startDate,
-                                    @RequestParam Date endDate,
-                                    @RequestParam String informationAt
+    public ResponseEntity getSearch(@RequestParam(value = "facilityName", required=false)  String facilityName,
+                                    @RequestParam(value = "startDate", required=false) Date startDate,
+                                    @RequestParam(value = "endDate", required=false) Date endDate,
+                                    @RequestParam(value = "informationAt", required=false) String informationAt
                                     ){
         try{
 
