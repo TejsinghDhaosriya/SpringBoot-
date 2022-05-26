@@ -26,7 +26,7 @@ public class FacilityService {
             return facilityRepository.findAllByNameAndCreatedDateBetween(facilityName,startDate,endDate);
         }
         else if(!StringUtils.hasLength(facilityName) && startDate !=null && endDate !=null){
-            return facilityRepository.findAllByCreatedDateBetween(facilityName,startDate,endDate);
+            return facilityRepository.findAllByCreatedDateBetween(startDate,endDate);
         }
         else {
             return facilityRepository.findAll();
