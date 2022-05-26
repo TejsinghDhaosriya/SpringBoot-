@@ -14,5 +14,5 @@ public interface FacilityRepository extends CrudRepository<Facilities,Long> {
 
     List<Facilities> findAllByNameAndCreatedDateBetween(String facilityName, Date startDate, Date endDate);
 
-    List<Facilities> findAllByCreatedDateBetween(String facilityName, Date startDate, Date endDate);
+    List<Facilities> findAllByCreatedDateBetween(Date startDate, Date endDate);
 }
