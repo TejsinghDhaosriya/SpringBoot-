@@ -24,7 +24,6 @@ public class FacilityFacade {
             return facilityService.search(facilityName,startDate,endDate);
         }
         List<Facilities> search = facilityService.search(facilityName, startDate, endDate);
-        List response = new ArrayList();
         if("buildings".equalsIgnoreCase(informationAt)){
             return getBuildingLevelSearch(search);
         }

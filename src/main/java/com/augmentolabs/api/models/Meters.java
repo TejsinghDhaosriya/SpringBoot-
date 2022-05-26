@@ -1,6 +1,7 @@
 package com.augmentolabs.api.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,9 +35,10 @@ public class Meters {
 
     private String type;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "zone_id", referencedColumnName = "id")
     @JsonIgnoreProperties("meters")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Zones zones;
 
 
