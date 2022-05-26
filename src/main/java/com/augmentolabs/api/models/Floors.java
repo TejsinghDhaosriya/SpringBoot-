@@ -17,7 +17,7 @@ import java.util.List;
 import static com.augmentolabs.api.utils.utils.DB_NAME;
 
 @Entity
-@Table(schema = DB_NAME, name = "floors")
+@Table(schema = "meters", name = "floors")
 @EntityListeners(AuditingEntityListener.class)
 @Data
 @Builder(toBuilder = true)

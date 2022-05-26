@@ -1,5 +1,6 @@
 package com.augmentolabs.api.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,19 +32,14 @@ public class Buildings {
 
     private String name;
 
-    private Long facilityId;
-
     private boolean enabled;
 
     private boolean active;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Floors> floors;
-
-    @NotFound(action = NotFoundAction.IGNORE)
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "building_id", nullable = false)
-    private Buildings buildings;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "facility_id", referencedColumnName = "id")
+    @JsonIgnoreProperties("buildings")
+    private Facilities facilities;
 
     @CreatedDate
     private Date createdDate;

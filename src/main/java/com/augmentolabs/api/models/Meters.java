@@ -16,7 +16,7 @@ import java.util.Date;
 import static com.augmentolabs.api.utils.utils.DB_NAME;
 
 @Entity
-@Table(schema = DB_NAME, name = "meters")
+@Table(schema = "DB_NAME", name = "meters")
 @EntityListeners(AuditingEntityListener.class)
 @Data
 @Builder(toBuilder = true)
@@ -29,8 +29,6 @@ public class Meters {
     private Long id;
 
     private String name;
-
-    private Long zoneId;
 
     private boolean enabled;
     private boolean active;
