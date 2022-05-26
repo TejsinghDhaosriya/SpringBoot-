@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
+import static com.augmentolabs.api.utils.utils.getDate;
+
 @RestController
 @RequestMapping("/api")
 @Slf4j
@@ -20,15 +22,14 @@ public class SearchController {
 
     @GetMapping("/search")
     public ResponseEntity getSearch(@RequestParam(value = "facilityName", required=false)  String facilityName,
-                                    @RequestParam(value = "startDate", required=false) Date startDate,
-                                    @RequestParam(value = "endDate", required=false) Date endDate,
+                                    @RequestParam(value = "startDate", required=false) String startDate,
+                                    @RequestParam(value = "endDate", required=false) String endDate,
                                     @RequestParam(value = "informationAt", required=false) String informationAt
                                     ){
         try{
-
-            return new ResponseEntity(facilityFacade.search(facilityName,startDate,endDate,informationAt), HttpStatus.OK);
+            return new ResponseEntity(facilityFacade.search(facilityName,getDate(startDate),getDate(endDate),informationAt), HttpStatus.OK);
         }catch(Exception e){
-            return new ResponseEntity(null, HttpStatus.NOT_FOUND);
+            return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 }
