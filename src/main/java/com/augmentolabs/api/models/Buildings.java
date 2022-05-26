@@ -5,13 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -40,6 +39,10 @@ public class Buildings {
     @JoinColumn(name = "facility_id", referencedColumnName = "id")
     @JsonIgnoreProperties("buildings")
     private Facilities facilities;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "buildings", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("buildings")
+    private List<Floors> floors = new ArrayList<>();
 
     @CreatedDate
     private Date createdDate;
