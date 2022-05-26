@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Date;
 import java.util.List;
 
-public interface FacilityRepository extends CrudRepository<Facilities,Long> {
+public interface FacilityRepository extends CrudRepository<Facilities, Long> {
 
     List<Facilities> findAll();
 

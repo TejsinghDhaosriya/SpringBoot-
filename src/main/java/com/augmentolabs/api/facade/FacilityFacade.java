@@ -20,17 +20,17 @@ public class FacilityFacade {
     FacilityService facilityService;
 
     public List search(String facilityName, Date startDate, Date endDate, String informationAt) {
-        if(!StringUtils.hasLength(informationAt)){
-            return facilityService.search(facilityName,startDate,endDate);
+        if (!StringUtils.hasLength(informationAt)) {
+            return facilityService.search(facilityName, startDate, endDate);
         }
         List<Facilities> search = facilityService.search(facilityName, startDate, endDate);
-        if("buildings".equalsIgnoreCase(informationAt)){
+        if ("buildings".equalsIgnoreCase(informationAt)) {
             return getBuildingLevelSearch(search);
         }
-        if("floors".equalsIgnoreCase(informationAt)){
+        if ("floors".equalsIgnoreCase(informationAt)) {
             return getFloorLevelSearch(search);
         }
-        if("zones".equalsIgnoreCase(informationAt)){
+        if ("zones".equalsIgnoreCase(informationAt)) {
             return getZoneLevelSearch(search);
         }
         return search;
@@ -38,7 +38,7 @@ public class FacilityFacade {
 
     private List<Buildings> getBuildingLevelSearch(List<Facilities> search) {
         List<Buildings> response = new ArrayList();
-        search.forEach(s->{
+        search.forEach(s -> {
             response.addAll(s.getBuildings());
         });
         return response;
@@ -46,10 +46,11 @@ public class FacilityFacade {
 
     private List<Floors> getFloorLevelSearch(List<Facilities> search) {
         List<Floors> response = new ArrayList();
-        search.forEach(s->{
+        search.forEach(s -> {
             List<Buildings> buildings = s.getBuildings();
-            buildings.forEach(b->{
-                response.addAll(b.getFloors());});
+            buildings.forEach(b -> {
+                response.addAll(b.getFloors());
+            });
         });
 
         return response;
@@ -57,12 +58,12 @@ public class FacilityFacade {
 
     private List<Zones> getZoneLevelSearch(List<Facilities> search) {
         List<Zones> response = new ArrayList();
-        search.forEach(s->{
+        search.forEach(s -> {
             List<Buildings> buildings = s.getBuildings();
-            buildings.forEach(b->{
+            buildings.forEach(b -> {
                 List<Floors> floors = b.getFloors();
-                floors.forEach(f->{
-                response.addAll(f.getZones());
+                floors.forEach(f -> {
+                    response.addAll(f.getZones());
                 });
             });
         });
