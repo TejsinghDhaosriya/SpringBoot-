@@ -1,16 +1,16 @@
 package com.augmentolabs.api.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -36,9 +36,9 @@ public class Facilities {
     private boolean enabled;
     private boolean active;
 
-    @NotFound(action = NotFoundAction.IGNORE)
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Buildings> buildings;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "facilities", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("facilities")
+    private List<Buildings> buildings = new ArrayList<>();
 
     @CreatedDate
     private Date createdDate;
