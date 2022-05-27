@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static com.augmentolabs.api.utils.utils.DB_NAME;
+import static com.augmentolabs.api.utils.Utils.DB_NAME;
 
 @Entity
 @Table(schema = DB_NAME, name = "buildings")

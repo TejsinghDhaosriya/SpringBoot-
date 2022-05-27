@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.text.ParseException;
 
-import static com.augmentolabs.api.utils.utils.getDate;
+import static com.augmentolabs.api.utils.Utils.getDate;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 

@@ -13,7 +13,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.util.Date;
 
-import static com.augmentolabs.api.utils.utils.DB_NAME;
+import static com.augmentolabs.api.utils.Utils.DB_NAME;
 
 @Entity
 @Table(schema = DB_NAME, name = "meters")
