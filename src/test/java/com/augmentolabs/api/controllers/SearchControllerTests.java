@@ -26,7 +26,7 @@ public class SearchControllerTests {
 
 
     @Test
-    public void shouldCallSearchAPI() throws ParseException {
+    public void shouldCallSearchAPI() throws Exception {
         String facilityName = "abc";
         String startDate = "2021-02-12";
         String endDate = "2021-02-12";
@@ -36,7 +36,7 @@ public class SearchControllerTests {
     }
 
     @Test
-    public void shouldThrowErrorWhenCallSearchAPI() throws ParseException {
+    public void shouldThrowErrorWhenCallSearchAPI() throws Exception {
         String facilityName = "abc";
         String startDate = "2021-02-12";
         String endDate = "2021-02-12";
