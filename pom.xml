@@ -81,6 +81,7 @@
 						<exclude>com/augmentolabs/api/dtos/**</exclude>
 						<exclude>com/augmentolabs/api/repositories/**</exclude>
 						<exclude>com/augmentolabs/api/models/**</exclude>
+						<exclude>com/augmentolabs/api/aspects/**</exclude>
 						<exclude>com/augmentolabs/api/*.class</exclude>
 					</excludes>
 				</configuration>
