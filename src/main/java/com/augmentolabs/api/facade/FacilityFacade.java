@@ -12,6 +12,9 @@ import org.springframework.util.StringUtils;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+
+import static com.augmentolabs.api.utils.Utils.INVALID_INFORMATION_AT_PASSED_POSSIBLE_VALUES_ARE_BUILDINGS_FLOORS_ZONES;
 
 @Service
 public class FacilityFacade {
@@ -19,9 +22,13 @@ public class FacilityFacade {
     @Autowired
     FacilityService facilityService;
 
-    public List search(String facilityName, Date startDate, Date endDate, String informationAt) {
+    public List search(String facilityName, Date startDate, Date endDate, String informationAt) throws Exception {
+        Set<String> information = Set.of("buildings", "floors","zones");
         if (!StringUtils.hasLength(informationAt)) {
             return facilityService.search(facilityName, startDate, endDate);
+        }
+        if(!information.contains(informationAt)){
+            throw new Exception(INVALID_INFORMATION_AT_PASSED_POSSIBLE_VALUES_ARE_BUILDINGS_FLOORS_ZONES);
         }
         List<Facilities> search = facilityService.search(facilityName, startDate, endDate);
         if ("buildings".equalsIgnoreCase(informationAt)) {
@@ -30,10 +37,7 @@ public class FacilityFacade {
         if ("floors".equalsIgnoreCase(informationAt)) {
             return getFloorLevelSearch(search);
         }
-        if ("zones".equalsIgnoreCase(informationAt)) {
-            return getZoneLevelSearch(search);
-        }
-        return search;
+        return getZoneLevelSearch(search);
     }
 
     private List<Buildings> getBuildingLevelSearch(List<Facilities> search) {
